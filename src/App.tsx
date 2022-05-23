@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+
 import logo from './logo.svg';
+
 import styles from './App.module.scss';
 
-function App() {
+export const App: React.FC = () => {
   const [count, setCount] = useState(0);
+
+  const onClickHandler = useCallback(() => {
+    setCount((c) => c + 1);
+  }, []);
 
   return (
     <div className={styles.App}>
@@ -11,7 +17,7 @@ function App() {
         <img src={logo} className={styles['App-logo']} alt="logo" />
         <p>Perform project setup</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button type="button" onClick={onClickHandler}>
             count is: {count}
           </button>
         </p>
@@ -19,12 +25,7 @@ function App() {
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
-          <a
-            className={styles['App-link']}
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className={styles['App-link']} href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React
           </a>
           {' | '}
@@ -40,7 +41,6 @@ function App() {
       </header>
     </div>
   );
-}
-export const sum = (a: number, b: number) => a + b;
+};
 
-export default App;
+export const sum = (a: number, b: number): number => a + b;
