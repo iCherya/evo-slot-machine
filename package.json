@@ -7,8 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
-    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
-    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write"
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -49,7 +50,7 @@
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "npm run format",
-      "npm run lint --fix"
+      "npm run lint"
     ]
   }
 }
