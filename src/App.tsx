@@ -7,6 +7,8 @@ import styles from './App.module.scss';
 export const App: React.FC = () => {
   const [count, setCount] = useState(0);
 
+  throw new Error('test');
+
   const onClickHandler = useCallback(() => {
     setCount((c) => c + 1);
   }, []);
