@@ -1,3 +1,10 @@
+@import '@/styles/variables.scss';
+
 .wrapper {
-  text-align: center;
+  max-width: $breakpoint-xxl;
+  padding: $spacing-base;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-large;
+  margin: 0 auto;
 }

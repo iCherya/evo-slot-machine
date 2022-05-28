@@ -2,5 +2,33 @@
 $font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
   'Droid Sans', 'Helvetica Neue', sans-serif;
 $font-size-base: 1rem;
+$font-size-small: $font-size-base * 0.75;
+$font-size-large: $font-size-base * 1.5;
+$font-size-xlarge: $font-size-base * 2;
 $font-weight-base: 400;
+$font-weight-bold: 600;
 $line-height-base: 1.3;
+
+/* Spacing */
+$spacing-none: 0;
+$spacing-base: $font-size-base;
+$spacing-small: $font-size-base * 0.5;
+$spacing-large: $font-size-base * 1.5;
+
+/* Breakpoints */
+$breakpoint-xs: 375px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1536px;
+
+/* Colors */
+$color-base: #8d99ae;
+$color-base-light: #edf2f4;
+$color-base-dark: #5c6d7a;
+$color-accents: #ef233c;
+$color-accents-dark: #d90429;
+$color-accents-light: #ffd9e5;
+$color-white: #fff;
+$color-black: #000;
