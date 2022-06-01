@@ -15,6 +15,8 @@ module.exports = {
   },
   plugins: ['import', 'import-newlines', '@typescript-eslint/eslint-plugin', 'react-hooks'],
   rules: {
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'arrow-body-style': 'off',
     'arrow-parens': 'off',
     'class-methods-use-this': 'off',
@@ -329,7 +331,7 @@ module.exports = {
     'import/no-default-export': 'error',
     'import/no-dynamic-require': 'warn',
     'import/no-extraneous-dependencies': 'off',
-    'import/no-unassigned-import': ['error', { allow: ['react', '**/*.css'] }],
+    'import/no-unassigned-import': ['error', { allow: ['react', '**/*.css', '**/*.scss'] }],
     'import/no-webpack-loader-syntax': 'off',
     'import/prefer-default-export': 'off',
     'import-newlines/enforce': [
@@ -401,5 +403,6 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-redundant-roles': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
+    'import/extensions': 'off',
   },
 };

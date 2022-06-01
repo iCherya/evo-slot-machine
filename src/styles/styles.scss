@@ -1,0 +1,14 @@
+@import 'reset';
+@import 'variables';
+
+body {
+  width: 100%;
+  background-color: $color-base-dark;
+  color: $color-base-light;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  font-weight: $font-weight-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
