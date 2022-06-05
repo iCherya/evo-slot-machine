@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-import { stores } from './stores';
+import { RootStoreType, rootStore } from './stores';
 
-import type { ProviderProps } from '@/types';
+import type { IProviderProps } from '@/types';
 
-const StoreContext = React.createContext(stores);
+export const StoreContext = React.createContext<RootStoreType | null>(null);
 
-export const StoreProvider: React.FC<ProviderProps> = ({ children }) => (
-  <StoreContext.Provider value={stores}>{children}</StoreContext.Provider>
+export const StoreProvider: React.FC<IProviderProps> = ({ children }) => (
+  <StoreContext.Provider value={rootStore}>{children}</StoreContext.Provider>
 );
 
-export const useStore = (): typeof stores => {
+export const useStore = (): RootStoreType => {
   const store = React.useContext(StoreContext);
 
   if (!store) {
