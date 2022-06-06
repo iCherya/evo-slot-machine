@@ -10,13 +10,14 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "postinstall": "husky install"
+    "postinstall": "husky install && patch-package"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "mobx": "^6.6.0",
     "mobx-react-lite": "^3.4.0",
     "react": "^18.0.0",
+    "react-awesome-button": "^6.5.1",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "lint-staged": "^12.4.1",
+    "patch-package": "^6.4.7",
     "sass": "^1.52.1",
     "ts-jest": "^28.0.2",
     "ts-node": "^10.7.0",

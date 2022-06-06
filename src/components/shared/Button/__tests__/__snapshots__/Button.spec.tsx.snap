@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render AwesomeButton button by default 1`] = `
+<div>
+  <div
+    data-testid="default_button"
+  />
+</div>
+`;
+
+exports[`Button should render AwesomeButtonSocial button if passed option is social 1`] = `
+<div>
+  <div
+    data-testid="social_button"
+  />
+</div>
+`;
