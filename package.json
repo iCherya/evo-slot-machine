@@ -7,6 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
     "postinstall": "husky install"
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^13.2.0",
+    "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.5.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",

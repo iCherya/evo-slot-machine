@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render Game component if game has been started 1`] = `
+<div>
+  <div>
+    <div>
+      <h1>
+        Jumbo Slot
+      </h1>
+      Language switcher
+    </div>
+    <div
+      data-testid="game"
+    />
+    <div>
+      Footer component
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App should render Main component if game is not started 1`] = `
+<div>
+  <div>
+    <div>
+      <h1>
+        Jumbo Slot
+      </h1>
+      Language switcher
+    </div>
+    <div
+      data-testid="main"
+    />
+    <div>
+      Footer component
+    </div>
+  </div>
+</div>
+`;
