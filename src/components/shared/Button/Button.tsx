@@ -1,11 +1,15 @@
 import React from 'react';
-// @ts-ignore wrong library types
 import { AwesomeButton, AwesomeButtonSocial } from 'react-awesome-button';
 import 'react-awesome-button/src/styles/themes/theme-eric/styles.scss';
 
 import { BUTTON_OPTIONS } from '@/config/buttons';
 
-export const Button: React.FC<AwesomeButton> = ({ option, children, ...props }) => {
+export const Button: React.FC<
+  Partial<AwesomeButton> & {
+    option?: typeof BUTTON_OPTIONS[keyof typeof BUTTON_OPTIONS];
+    children?: React.ReactNode;
+  }
+> = ({ option, children, ...props }) => {
   if (option === BUTTON_OPTIONS.SOCIAL) {
     return <AwesomeButtonSocial {...props}>{children}</AwesomeButtonSocial>;
   }
