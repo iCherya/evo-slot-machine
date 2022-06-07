@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Footer } from '@/components/Footer';
+import { Footer } from '@/components/ui/Footer';
 import { CONTENT } from '@/config/content';
 
 jest.mock('@/components/shared/Button', () => ({

@@ -5,7 +5,7 @@ import { useStore } from '@/store';
 import { CONTENT } from '@/config/content';
 import { Button } from '@/components/shared/Button';
 
-import welcomeBanner from '../../../public/assets/welcome-banner.jpeg';
+import welcomeBanner from '@/../assets/welcome-banner.jpeg';
 
 import styles from './Welcome.module.scss';
 

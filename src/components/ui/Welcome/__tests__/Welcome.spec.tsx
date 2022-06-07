@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import { Welcome } from '@/components/Welcome';
+import { Welcome } from '@/components/ui/Welcome';
 import { CONTENT } from '@/config/content';
 
 const mockedStartGame = jest.fn();

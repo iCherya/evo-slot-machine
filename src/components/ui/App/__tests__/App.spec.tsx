@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { App } from '@/components/App';
+import { App } from '@/components/ui/App/App';
 import { useStore } from '@/store';
 
 const mockedUseStore = useStore as jest.Mock;
@@ -9,16 +9,16 @@ jest.mock('@/store', () => ({
   useStore: jest.fn(),
 }));
 
-jest.mock('@/components/Layout', () => ({
+jest.mock('@/components/ui/Layout', () => ({
   // prettier-ignore
   Layout: ({ children }: { children: React.ReactNode; }) => <div data-testid="layout">{children}</div>,
 }));
 
-jest.mock('@/components/Game', () => ({
+jest.mock('@/components/ui/Game', () => ({
   Game: () => <div data-testid="game" />,
 }));
 
-jest.mock('@/components/Welcome', () => ({
+jest.mock('@/components/ui/Welcome', () => ({
   Welcome: () => <div data-testid="welcome" />,
 }));
 

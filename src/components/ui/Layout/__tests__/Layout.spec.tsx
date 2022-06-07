@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 
-import { Layout } from '@/components/Layout';
+import { Layout } from '@/components/ui/Layout';
 
-jest.mock('@/components/Header', () => ({
+jest.mock('@/components/ui/Header', () => ({
   Header: () => <div data-testid="header" />,
 }));
 
-jest.mock('@/components/Footer', () => ({
+jest.mock('@/components/ui/Footer', () => ({
   Footer: () => <div data-testid="footer" />,
 }));
 
