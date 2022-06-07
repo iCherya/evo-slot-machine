@@ -1,10 +1,16 @@
 @import '@/styles/variables.scss';
 
 .wrapper {
-  max-width: $breakpoint-xxl;
+  max-width: $breakpoint-lg;
   padding: $spacing-base;
   display: flex;
   flex-direction: column;
-  gap: $spacing-large;
   margin: 0 auto;
+}
+
+.childrenWrapper {
+  background-color: $color-base-light;
+  color: $color-base-dark;
+  border-radius: $spacing-base;
+  margin-bottom: $spacing-base;
 }

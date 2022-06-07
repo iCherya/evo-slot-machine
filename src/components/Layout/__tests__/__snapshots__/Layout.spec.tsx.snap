@@ -6,11 +6,13 @@ exports[`Layout should render Header and Footer components 1`] = `
     <div
       data-testid="header"
     />
-    <div
-      data-testid="child"
-    >
-      Child component
-    </div>
+    <main>
+      <div
+        data-testid="child"
+      >
+        Child component
+      </div>
+    </main>
     <div
       data-testid="footer"
     />
@@ -24,21 +26,23 @@ exports[`Layout should render children components 1`] = `
     <div
       data-testid="header"
     />
-    <div
-      data-testid="child"
-    >
-      Child component
-    </div>
-    <div
-      data-testid="child"
-    >
-      Child component
-    </div>
-    <div
-      data-testid="child"
-    >
-      Child component
-    </div>
+    <main>
+      <div
+        data-testid="child"
+      >
+        Child component
+      </div>
+      <div
+        data-testid="child"
+      >
+        Child component
+      </div>
+      <div
+        data-testid="child"
+      >
+        Child component
+      </div>
+    </main>
     <div
       data-testid="footer"
     />

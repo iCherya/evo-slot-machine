@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { Header } from '@/components/Header/Header';
-import { Footer } from '@/components/Footer/Footer';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+
+import { IProviderProps } from '@/types';
 
 import styles from './Layout.module.scss';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<IProviderProps> = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {children}
+      <main className={styles.childrenWrapper}>{children}</main>
       <Footer />
     </div>
   );
