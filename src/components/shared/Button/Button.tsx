@@ -8,6 +8,10 @@ export const Button: React.FC<
   Partial<AwesomeButton> & {
     option?: typeof BUTTON_OPTIONS[keyof typeof BUTTON_OPTIONS];
     children?: React.ReactNode;
+    action?: () => void;
+    type?: string;
+    className?: string;
+    href?: string;
   }
 > = ({ option, children, ...props }) => {
   if (option === BUTTON_OPTIONS.SOCIAL) {
