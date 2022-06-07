@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome should render main welcome banner 1`] = `
+<img
+  alt="Lucky Spin Banner"
+/>
+`;
+
+exports[`Welcome should render starting game button 1`] = `
+<button
+  type="secondary"
+>
+  PLAY!
+</button>
+`;
+
+exports[`Welcome should start the game when button clicked 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="Lucky Spin Banner"
+      />
+    </div>
+    <div>
+      <button
+        type="secondary"
+      >
+        PLAY!
+      </button>
+    </div>
+  </div>
+</div>
+`;

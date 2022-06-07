@@ -1,0 +1,6 @@
+@import '@/styles/variables.scss';
+
+.wrapper {
+  height: 300px; // for now - will be replaced with dynamic height
+  padding: $spacing-base;
+}

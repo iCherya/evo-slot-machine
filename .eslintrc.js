@@ -334,6 +334,7 @@ module.exports = {
     'import/no-unassigned-import': ['error', { allow: ['react', '**/*.css', '**/*.scss'] }],
     'import/no-webpack-loader-syntax': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-absolute-path': 'off',
     'import-newlines/enforce': [
       'warn',
       {

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render credentials section 1`] = `
+<div
+  data-testid="credentials"
+>
+  <img
+    alt="Evolution logo"
+  />
+  <p>
+    TypeScript Bootcamp
+  </p>
+</div>
+`;
+
+exports[`Footer should render settings button 1`] = `
+Array [
+  <button
+    data-testid="settings-button"
+  />,
+]
+`;
+
+exports[`Footer should render social buttons 1`] = `
+<div
+  data-testid="social-buttons"
+>
+  <span>
+    <button
+      data-testid="button"
+    />
+  </span>
+  <span>
+    <button
+      data-testid="button"
+    />
+  </span>
+</div>
+`;
