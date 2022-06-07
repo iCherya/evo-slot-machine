@@ -1,0 +1,29 @@
+@import '@/styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-black;
+}
+
+.socialButton {
+  margin-left: $spacing-small;
+}
+
+.controlsButton {
+  padding: 0;
+  width: $font-size-xlarge;
+  height: $font-size-xlarge;
+  background-color: transparent;
+  border: none;
+  background-image: url('../../../public/icons/settings.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+}
