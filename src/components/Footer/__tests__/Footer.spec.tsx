@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import { CONTENT } from '@/config/content';
 
 jest.mock('@/components/shared/Button', () => ({
-  Button: () => <div data-testid="button" />,
+  Button: () => <button data-testid="button" />,
 }));
 
 describe('Footer', () => {

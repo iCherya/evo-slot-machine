@@ -26,12 +26,12 @@ exports[`Footer should render social buttons 1`] = `
   data-testid="social-buttons"
 >
   <span>
-    <div
+    <button
       data-testid="button"
     />
   </span>
   <span>
-    <div
+    <button
       data-testid="button"
     />
   </span>
