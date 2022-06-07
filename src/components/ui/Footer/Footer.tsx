@@ -4,7 +4,7 @@ import { CONTENT } from '@/config/content';
 import { BUTTON_OPTIONS } from '@/config/buttons';
 import { Button } from '@/components/shared/Button';
 
-import evolutionLogo from '@/../assets/evolution-logo.svg';
+import evolutionLogo from '/assets/evolution-logo.svg';
 
 import styles from './Footer.module.scss';
 
