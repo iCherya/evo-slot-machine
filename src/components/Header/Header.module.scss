@@ -1,12 +1,39 @@
 @import '@/styles/variables.scss';
 
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0 auto;
+  width: 50%;
+  padding: $spacing-base $spacing-large 0;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  text-align: center;
+  font-size: $font-size-xlarge;
+  font-weight: $font-weight-base * 2.2;
+  letter-spacing: 0.2rem;
+  color: $color-accents-dark;
+  text-shadow: 1px 2px 1px $color-base-dark;
+  background-color: $color-gold;
+  border-left: $spacing-base solid $color-gold;
+  border-right: $spacing-base solid $color-gold;
+  animation: bumping 1s infinite;
+  animation-delay: 0.3s;
 }
 
-.title {
-  font-size: $font-size-large;
-  font-weight: $font-weight-bold;
+@keyframes bumping {
+  0%,
+  40%,
+  100% {
+    transform: translateY(2px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+}
+
+.game {
+  animation: none;
+  background-color: $color-base-light;
+  border-left-color: $color-base-light;
+  border-right-color: $color-base-light;
 }

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render header title if game is not started 1`] = `
+<header
+  class=""
+  data-testid="header"
+>
+  JACKPOT
+</header>
+`;
+
+exports[`Header should render user balance with currency if game is started 1`] = `
+<header
+  class=""
+  data-testid="header"
+>
+  0 €
+</header>
+`;
