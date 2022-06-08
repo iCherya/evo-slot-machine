@@ -8,15 +8,9 @@ import { AnimatedNumber } from '@/components/logic/AnimatedNumber';
 
 import styles from './Header.module.scss';
 
-const dummy = {
-  user: {
-    balance: 42,
-  },
-};
-
 export const Header: React.FC = observer(() => {
-  const { game } = useStore();
-  const { user } = dummy;
+  const { game, user } = useStore();
+
   const {
     ui: { header },
     domain: { currency },

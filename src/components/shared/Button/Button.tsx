@@ -12,6 +12,8 @@ export const Button: React.FC<
     type?: string;
     className?: string;
     href?: string;
+    size?: 'small' | 'medium' | 'large';
+    disabled?: boolean;
   }
 > = ({ option, children, ...props }) => {
   if (option === BUTTON_OPTIONS.SOCIAL) {

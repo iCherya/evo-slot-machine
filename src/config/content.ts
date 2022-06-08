@@ -16,5 +16,7 @@ export const CONTENT = {
   },
   domain: {
     currency: '€',
+    depositValue: 100,
+    betValue: 10,
   },
 };

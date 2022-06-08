@@ -3,4 +3,15 @@
 .wrapper {
   height: 300px; // for now - will be replaced with dynamic height
   padding: $spacing-base;
+  position: relative;
+}
+
+.controls {
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }

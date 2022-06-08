@@ -35,6 +35,9 @@ describe('Header', () => {
       game: {
         isStarted: true,
       },
+      user: {
+        balance: 42,
+      },
     }));
 
     const { getByTestId } = render(<Header />);
