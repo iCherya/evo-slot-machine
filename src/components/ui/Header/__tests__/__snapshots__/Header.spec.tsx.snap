@@ -14,6 +14,10 @@ exports[`Header should render user balance with currency if game is started 1`] 
   class=""
   data-testid="header"
 >
-  0 €
+  <div
+    data-testid="animated-number"
+  >
+    42
+  </div>
 </header>
 `;
