@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { App } from '@/components/ui/App/App';
+import { App } from '@/components/ui/App';
 import { useStore } from '@/store';
 
 const mockedUseStore = useStore as jest.Mock;
@@ -25,8 +25,8 @@ jest.mock('@/components/ui/Welcome', () => ({
 describe('App', () => {
   it('should render Welcome component wrapped by Layout if game is not started', () => {
     mockedUseStore.mockImplementationOnce(() => ({
-      app: {
-        isGameStarted: false,
+      game: {
+        isStarted: false,
       },
     }));
 
@@ -40,8 +40,8 @@ describe('App', () => {
 
   it('should render Game component wrapped by Layout if game has been started', () => {
     mockedUseStore.mockImplementationOnce(() => ({
-      app: {
-        isGameStarted: true,
+      game: {
+        isStarted: true,
       },
     }));
 

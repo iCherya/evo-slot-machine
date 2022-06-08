@@ -7,7 +7,7 @@ import { Game } from '@/components/ui/Game';
 import { Welcome } from '@/components/ui/Welcome';
 
 export const App: React.FC = observer(() => {
-  const { app } = useStore();
+  const { game } = useStore();
 
-  return <Layout>{app.isGameStarted ? <Game /> : <Welcome />}</Layout>;
+  return <Layout>{game.isStarted ? <Game /> : <Welcome />}</Layout>;
 });

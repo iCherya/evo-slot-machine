@@ -7,7 +7,7 @@ import { StoreProvider, StoreContext, useStore } from '../index';
 
 jest.mock('@/store/stores', () => ({
   rootStore: {
-    app: { isGameStarted: true },
+    game: { isStarted: true },
   },
 }));
 
@@ -28,7 +28,7 @@ describe('store utils', () => {
       const { getByText } = render(
         <StoreProvider>
           <StoreContext.Consumer>
-            {(store) => <span>Game status: {store?.app.isGameStarted ? 'started' : 'not started'}</span>}
+            {(store) => <span>Game status: {store?.game.isStarted ? 'started' : 'not started'}</span>}
           </StoreContext.Consumer>
         </StoreProvider>,
       );
@@ -45,7 +45,7 @@ describe('store utils', () => {
 
       const { result } = renderHook(useStore, { wrapper });
 
-      expect(result.current).toStrictEqual({ app: { isGameStarted: true } });
+      expect(result.current).toStrictEqual({ game: { isStarted: true } });
     });
   });
 });

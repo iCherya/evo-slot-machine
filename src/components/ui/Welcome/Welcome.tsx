@@ -11,11 +11,11 @@ import styles from './Welcome.module.scss';
 
 export const Welcome: React.FC = observer(() => {
   const { ui } = CONTENT;
-  const { app } = useStore();
+  const { game } = useStore();
 
   const onClickHandler = useCallback(() => {
-    app.startGame();
-  }, [app]);
+    game.startGame();
+  }, [game]);
 
   return (
     <div className={styles.wrapper}>
