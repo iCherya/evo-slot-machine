@@ -8,15 +8,9 @@ import { AnimatedNumber } from '@/components/logic/AnimatedNumber';
 
 import styles from './Header.module.scss';
 
-const dummy = {
-  user: {
-    balance: 42,
-  },
-};
-
 export const Header: React.FC = observer(() => {
-  const { app } = useStore();
-  const { user } = dummy;
+  const { game, user } = useStore();
+
   const {
     ui: { header },
     domain: { currency },
@@ -25,8 +19,8 @@ export const Header: React.FC = observer(() => {
   const format = useCallback((number: number) => `${Math.floor(number)} ${currency}`, [currency]);
 
   return (
-    <header data-testid="header" className={classNames(styles.wrapper, app.isGameStarted && styles.game)}>
-      {!app.isGameStarted ? header.title : <AnimatedNumber number={user.balance} format={format} />}
+    <header data-testid="header" className={classNames(styles.wrapper, game.isStarted && styles.game)}>
+      {!game.isStarted ? header.title : <AnimatedNumber number={user.balance} format={format} />}
     </header>
   );
 });

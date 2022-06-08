@@ -1,10 +1,13 @@
-import { AppStore } from './AppStore';
+import { GameStore } from './GameStore';
+import { UserStore } from './UserStore';
 
 class RootStore {
-  public app: AppStore;
+  public game: GameStore;
+  public user: UserStore;
 
   public constructor() {
-    this.app = new AppStore();
+    this.game = new GameStore();
+    this.user = new UserStore();
   }
 }
 

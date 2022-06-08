@@ -7,7 +7,7 @@ const mockedStartGame = jest.fn();
 
 jest.mock('@/store', () => ({
   useStore: jest.fn(() => ({
-    app: {
+    game: {
       startGame: mockedStartGame,
     },
   })),

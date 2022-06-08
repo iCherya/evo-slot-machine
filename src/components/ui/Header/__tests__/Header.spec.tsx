@@ -17,8 +17,8 @@ jest.mock('@/components/logic/AnimatedNumber', () => ({
 describe('Header', () => {
   it('should render header title if game is not started', () => {
     mockedUseStore.mockImplementationOnce(() => ({
-      app: {
-        isGameStarted: false,
+      game: {
+        isStarted: false,
       },
     }));
 
@@ -32,8 +32,11 @@ describe('Header', () => {
 
   it('should render user balance with currency if game is started', () => {
     mockedUseStore.mockImplementationOnce(() => ({
-      app: {
-        isGameStarted: true,
+      game: {
+        isStarted: true,
+      },
+      user: {
+        balance: 42,
       },
     }));
 
