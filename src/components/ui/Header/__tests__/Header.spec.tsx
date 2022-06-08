@@ -10,6 +10,10 @@ jest.mock('@/store', () => ({
   useStore: jest.fn(),
 }));
 
+jest.mock('@/components/logic/AnimatedNumber', () => ({
+  AnimatedNumber: jest.fn(({ number }) => <div data-testid="animated-number">{number}</div>),
+}));
+
 describe('Header', () => {
   it('should render header title if game is not started', () => {
     mockedUseStore.mockImplementationOnce(() => ({
@@ -35,8 +39,9 @@ describe('Header', () => {
 
     const { getByTestId } = render(<Header />);
     const header = getByTestId('header');
+    const animatedNumber = getByTestId('animated-number');
 
-    expect(header.textContent).toBe('0 €');
+    expect(animatedNumber.textContent).toBe('42');
 
     expect(header).toMatchSnapshot();
   });
