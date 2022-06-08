@@ -5,7 +5,7 @@ describe('GameStore', () => {
     expect(new GameStore()).toBeDefined();
   });
 
-  it('should have a property initial values', () => {
+  it('should have a property defined initial values', () => {
     const store = new GameStore();
 
     expect(store.isStarted).toBe(false);
