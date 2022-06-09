@@ -18,6 +18,16 @@
   border-right: $spacing-base solid $color-gold;
   animation: bumping 1s infinite;
   animation-delay: 0.3s;
+  border-width: 0;
+}
+
+.game {
+  animation: none;
+  background-color: $color-base-light;
+  border-left-color: $color-base-light;
+  border-right-color: $color-base-light;
+  color: $color-gold;
+  text-shadow: 1px 2px 1px $color-base-dark;
 }
 
 @keyframes bumping {
@@ -31,9 +41,8 @@
   }
 }
 
-.game {
-  animation: none;
-  background-color: $color-base-light;
-  border-left-color: $color-base-light;
-  border-right-color: $color-base-light;
+@media screen and (max-width: $breakpoint-sm) {
+  .wrapper {
+    font-size: $font-size-large;
+  }
 }

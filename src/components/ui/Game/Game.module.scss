@@ -1,17 +1,9 @@
 @import '@/styles/variables.scss';
 
 .wrapper {
-  height: 300px; // for now - will be replaced with dynamic height
-  padding: $spacing-base;
+  min-height: 300px; // for now - will be replaced with dynamic height
+  margin: $spacing-base $spacing-base 0;
   position: relative;
-}
-
-.controls {
-  position: absolute;
-  bottom: 1em;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 1em;
+  background-color: $color-base;
+  border-radius: $spacing-base;
 }

@@ -1,0 +1,21 @@
+@import '@/styles/variables.scss';
+
+.wrapper {
+  bottom: 1em;
+  padding: $spacing-base;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .wrapper {
+    flex-wrap: wrap;
+
+    & > :nth-child(2) {
+      order: -1;
+      width: 100%;
+    }
+  }
+}
