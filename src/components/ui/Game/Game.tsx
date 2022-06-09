@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { GameControls } from '@/components/logic/GameControls';
-
-import styles from './Game.module.scss';
+import { MachineReels } from '@/components/logic/MachineReels';
 
 export const Game: React.FC = () => {
   return (
     <>
-      <div className={styles.wrapper}>Slot Machine Reels</div>
+      <MachineReels />
       <GameControls />
     </>
   );
