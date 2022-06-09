@@ -1,0 +1,1 @@
+export { SlotReel } from './SlotReel';

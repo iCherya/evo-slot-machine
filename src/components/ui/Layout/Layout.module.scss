@@ -1,6 +1,6 @@
 @import '@/styles/variables.scss';
 
-.wrapper {
+.layout {
   max-width: $breakpoint-lg;
   padding: $spacing-base;
   display: flex;
@@ -8,9 +8,10 @@
   margin: 0 auto;
 }
 
-.childrenWrapper {
+.children {
   background-color: $color-base-light;
   color: $color-base-dark;
   border-radius: $spacing-base;
-  margin-bottom: $spacing-base;
+  margin-bottom: $spacing-small;
+  border-width: 0;
 }

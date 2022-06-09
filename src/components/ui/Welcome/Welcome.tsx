@@ -18,11 +18,11 @@ export const Welcome: React.FC = observer(() => {
   }, [game]);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.logoWrapper}>
+    <div className={styles.welcome}>
+      <div className={styles.banner}>
         <img src={welcomeBanner} alt="Lucky Spin Banner" />
       </div>
-      <div className={styles.buttonWrapper}>
+      <div className={styles.button}>
         <Button action={onClickHandler} type="secondary">
           {String(ui.welcome.buttonText)}
         </Button>

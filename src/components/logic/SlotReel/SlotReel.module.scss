@@ -1,0 +1,21 @@
+@import '@/styles/variables.scss';
+
+.reel {
+  width: $slot-size;
+  height: $slot-size * 7 / 3;
+  overflow: hidden;
+  flex: 1;
+  box-shadow: 0 0 0 3px $color-base-dark;
+}
+
+.slotsWrapper {
+  position: relative;
+  top: $slot-size * -1 * 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slot {
+  width: $slot-size;
+}

@@ -1,10 +1,15 @@
 @import '@/styles/variables.scss';
 
-.wrapper {
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $color-black;
+  gap: $spacing-small;
+  margin: $spacing-small 0;
+  background-color: $color-base-light;
+  padding: $spacing-base;
+  border-radius: $spacing-base;
 }
 
 .socialButton {
@@ -25,5 +30,16 @@
   &:hover {
     transform: rotate(45deg);
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .footer {
+    flex-direction: column;
+    gap: $spacing-small;
+
+    & > :nth-child(2) {
+      order: -1;
+    }
   }
 }

@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className={styles.wrapper}>
+    <footer className={styles.footer}>
       <div data-testid="credentials">
         <img src={evolutionLogo} alt="Evolution logo" />
         <p>{description}</p>

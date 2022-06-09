@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game should render MachineReels and GameControls components 1`] = `
+<div>
+  <div
+    data-testid="machine-reels"
+  />
+  <div
+    data-testid="game-controls"
+  />
+</div>
+`;

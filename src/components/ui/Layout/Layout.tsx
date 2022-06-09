@@ -9,9 +9,9 @@ import styles from './Layout.module.scss';
 
 export const Layout: React.FC<IProviderProps> = ({ children }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.layout}>
       <Header />
-      <main className={styles.childrenWrapper}>{children}</main>
+      <main className={styles.children}>{children}</main>
       <Footer />
     </div>
   );
