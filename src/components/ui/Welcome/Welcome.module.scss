@@ -1,6 +1,6 @@
 @import '@/styles/variables.scss';
 
-.wrapper {
+.welcome {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,10 +8,9 @@
   background-color: $color-gold;
   border-radius: $spacing-base;
   padding: $spacing-base;
-  // border: none;
 }
 
-.logoWrapper {
+.banner {
   border-radius: $spacing-base;
   overflow: hidden;
   max-height: 600px;
@@ -20,7 +19,7 @@
   justify-content: center;
 }
 
-.buttonWrapper {
+.button {
   position: absolute;
   top: 75%;
   left: 75%;

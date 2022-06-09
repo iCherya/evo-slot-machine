@@ -1,9 +1,9 @@
 @import '@/styles/variables.scss';
 
-.wrapper {
+.header {
   margin: 0 auto;
   width: 75%;
-  padding: $spacing-base $spacing-large 0;
+  padding: $spacing-base;
   border-radius: 50%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -21,7 +21,7 @@
   border-width: 0;
 }
 
-.game {
+.inGame {
   animation: none;
   background-color: $color-base-light;
   border-left-color: $color-base-light;
@@ -42,7 +42,7 @@
 }
 
 @media screen and (max-width: $breakpoint-sm) {
-  .wrapper {
+  .header {
     font-size: $font-size-large;
   }
 }

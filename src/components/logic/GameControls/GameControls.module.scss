@@ -1,6 +1,6 @@
 @import '@/styles/variables.scss';
 
-.wrapper {
+.gameControls {
   bottom: 1em;
   padding: $spacing-base;
   display: flex;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: $breakpoint-sm) {
-  .wrapper {
+  .gameControls {
     flex-wrap: wrap;
 
     & > :nth-child(2) {

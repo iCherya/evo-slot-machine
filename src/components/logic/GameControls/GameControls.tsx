@@ -25,7 +25,7 @@ export const GameControls: React.FC = observer(() => {
   }, [user, betValue]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.gameControls}>
       <Button className={styles.deposit} action={onDeposit}>
         Deposit
       </Button>

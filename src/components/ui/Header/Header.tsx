@@ -19,7 +19,7 @@ export const Header: React.FC = observer(() => {
   const format = useCallback((number: number) => `${Math.floor(number)} ${currency}`, [currency]);
 
   return (
-    <header data-testid="header" className={classNames(styles.wrapper, game.isStarted && styles.game)}>
+    <header data-testid="header" className={classNames(styles.header, game.isStarted && styles.inGame)}>
       {!game.isStarted ? header.title : <AnimatedNumber number={user.balance} format={format} />}
     </header>
   );
