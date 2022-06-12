@@ -3,18 +3,15 @@ import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
-import { CONTENT } from '@/config/content';
+import { CONTENT, DOMAIN } from '@/config';
 import { AnimatedNumber } from '@/components/logic/AnimatedNumber';
 
 import styles from './Header.module.scss';
 
 export const Header: React.FC = observer(() => {
   const { game, user } = useStore();
-
-  const {
-    ui: { header },
-    domain: { currency },
-  } = CONTENT;
+  const header = CONTENT.ui.header;
+  const currency = DOMAIN.currency;
 
   const format = useCallback((number: number) => `${Math.floor(number)} ${currency}`, [currency]);
 

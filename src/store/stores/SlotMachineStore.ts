@@ -1,55 +1,64 @@
 import { makeAutoObservable } from 'mobx';
-import { ReelStore } from '@/store/stores/ReelStore';
 
-const reelsCount = 3;
+import { DOMAIN } from '@/config';
+import { ReelStore } from '@/store/stores/ReelStore';
+import { user } from '@/store/stores/UserStore';
+import { game } from '@/store/stores/GameStore';
 
 export class SlotMachineStore {
-  private _reels: ReelStore[] = [];
-  private _isSpinning = false;
-  private _spinResults = new Set();
-  private _isWin = false;
+  public reels: ReelStore[] = [];
+  public isSpinning = false;
+  private spinResults = new Set();
+  private reelsCount = DOMAIN.reelsCount;
 
   public constructor() {
+    this.reels = new Array(this.reelsCount).fill(null).map((_, i) => new ReelStore(i));
+
     makeAutoObservable(this);
-
-    this.init();
-  }
-
-  public finishRotation(reelIndex: number): void {
-    this._spinResults.add(reelIndex);
-
-    if (this._spinResults.size === reelsCount) {
-      console.log('🚀 all reels finished rotation');
-
-      this._isSpinning = false;
-      this._spinResults.clear();
-
-      this._checkWin();
-    }
   }
 
   public spin(): void {
-    this._isSpinning = true;
-
-    this._reels.forEach((reel) => reel.startRotate());
+    this.isSpinning = true;
   }
 
-  private _checkWin(): void {
-    console.log('🎉 check win');
+  public spinEnd(reelIndex: number): void {
+    this.spinResults.add(reelIndex);
 
-    const items = this._reels.map(({ reelsSlots }) => reelsSlots[2].name);
-    console.log(items);
+    if (this.spinResults.size === this.reelsCount) {
+      console.log('🚀 all reels finished rotation');
+
+      this.isSpinning = false;
+      this.spinResults.clear();
+
+      this.checkWin();
+    }
   }
 
-  private init(): void {
-    this._reels = new Array(reelsCount).fill(null).map((_, i) => new ReelStore(this, i));
+  private checkWin(): void {
+    const items = this.reels.map((reel) => reel.reelSlots[2].name);
+    const barItemsCount = items.filter((item) => item === 'bar').length;
+    let winAmount = 0;
+
+    if (barItemsCount) {
+      winAmount += barItemsCount * this.getPriceBySlotName('bar');
+    }
+
+    const isAllItemsInRow = new Set(items).size === 1;
+    if (isAllItemsInRow) {
+      winAmount += items.length * this.getPriceBySlotName(items[0]) * DOMAIN.rowWinMultiplier;
+    }
+
+    if (winAmount) {
+      user.deposit(winAmount);
+      game.hasWon(winAmount);
+    }
   }
 
-  public get reels(): ReelStore[] {
-    return this._reels;
-  }
+  private getPriceBySlotName(name: string): number {
+    const { price = 1 } = DOMAIN.slotsConfig.find((el) => el.name === name) || {};
 
-  public get isSpinning(): boolean {
-    return this._isSpinning;
+    return price;
   }
 }
+
+export const slotMachine = new SlotMachineStore();

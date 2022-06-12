@@ -1,6 +1,6 @@
-import { GameStore } from './GameStore';
-import { UserStore } from './UserStore';
-import { SlotMachineStore } from './SlotMachineStore';
+import { GameStore, game } from './GameStore';
+import { UserStore, user } from './UserStore';
+import { SlotMachineStore, slotMachine } from './SlotMachineStore';
 
 class RootStore {
   public game: GameStore;
@@ -8,9 +8,9 @@ class RootStore {
   public slotMachine: SlotMachineStore;
 
   public constructor() {
-    this.game = new GameStore();
-    this.user = new UserStore();
-    this.slotMachine = new SlotMachineStore();
+    this.game = game;
+    this.user = user;
+    this.slotMachine = slotMachine;
   }
 }
 

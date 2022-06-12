@@ -1,67 +1,40 @@
 import { makeAutoObservable } from 'mobx';
-import { SlotMachineStore } from '@/store/stores/SlotMachineStore';
 
-import { CONTENT } from '@/config/content';
-import { ISlotData } from '@/types';
+import { DOMAIN } from '@/config';
 import { shuffleArray, rotateArray } from '@/utils';
 
+import { ISlotData } from '@/types';
+
 export class ReelStore {
-  private _slotMachine: SlotMachineStore;
-  private _reelIndex: number;
-  private _reelSlots = [] as ISlotData[];
-  private _isRotating = false;
+  public reelIndex: number;
+  public reelSlots = [] as ISlotData[];
 
-  private _resultedSlotName = '';
-
-  public constructor(slotMachine: SlotMachineStore, reelIndex: number) {
-    this._slotMachine = slotMachine;
-    this._reelIndex = reelIndex;
-    this._init();
+  public constructor(reelIndex: number) {
+    this.reelIndex = reelIndex;
+    this.init();
 
     makeAutoObservable(this);
   }
 
-  public startRotate(): void {
-    this._isRotating = true;
-  }
-
-  public stopRotate(): void {
-    this._isRotating = false;
-  }
-
   public rotateReel(): void {
-    this._reelSlots = rotateArray(this._reelSlots);
+    this.reelSlots = rotateArray(this.reelSlots);
   }
 
-  private _init(): void {
-    const slotsConfigData = CONTENT.domain.slotsConfig;
-    const reelSlots = slotsConfigData
+  private init(): void {
+    const reelSlots = DOMAIN.slotsConfig
       .sort((a, b) => b.price - a.price)
       .reduce((acc, curr, index) => {
-        const currentTypeSlots = [];
         let timesPerSlotType = index + 1;
 
         while (timesPerSlotType > 0) {
-          currentTypeSlots.push(curr);
+          acc.push(curr);
           timesPerSlotType -= 1;
         }
 
-        return [...acc, ...currentTypeSlots];
+        return acc;
       }, [] as ISlotData[])
       .map((el, id) => ({ ...el, id }));
 
-    this._reelSlots = shuffleArray(reelSlots);
-  }
-
-  public get reelIndex(): number {
-    return this._reelIndex;
-  }
-
-  public get reelsSlots(): ISlotData[] {
-    return this._reelSlots;
-  }
-
-  public get isRotating(): boolean {
-    return this._isRotating;
+    this.reelSlots = shuffleArray(reelSlots);
   }
 }

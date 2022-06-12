@@ -2,7 +2,7 @@ import React from 'react';
 import { AwesomeButton, AwesomeButtonSocial } from 'react-awesome-button';
 import 'react-awesome-button/src/styles/themes/theme-eric/styles.scss';
 
-import { BUTTON_OPTIONS } from '@/config/buttons';
+import { BUTTON_OPTIONS } from '@/config';
 
 export const Button: React.FC<
   Partial<AwesomeButton> & {

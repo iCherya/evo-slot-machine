@@ -10,3 +10,12 @@ exports[`Game should render SlotMachine and GameControls components 1`] = `
   />
 </div>
 `;
+
+exports[`Game should render banner with win count if showWinAnimation set to true 1`] = `
+<div
+  data-testid="banner"
+>
+  +
+  42
+</div>
+`;

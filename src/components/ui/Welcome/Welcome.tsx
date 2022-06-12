@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
-import { CONTENT } from '@/config/content';
+import { CONTENT } from '@/config';
 import { Button } from '@/components/shared/Button';
 
 import welcomeBanner from '/assets/welcome-banner.jpeg';

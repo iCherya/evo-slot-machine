@@ -2,20 +2,21 @@
 
 .reel {
   width: $slot-size;
-  height: $slot-size * 7 / 3;
+  height: $slot-size * 3;
   overflow: hidden;
   flex: 1;
   box-shadow: 0 0 0 3px $color-base-dark;
 
   &.rotate .slotsWrapper {
     transition: margin-top 0.04s linear;
-    margin-top: 100px;
+    margin-top: $slot-size * 2;
   }
 }
 
 .slotsWrapper {
   position: relative;
-  top: $slot-size * -1 * 4 / 3;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
