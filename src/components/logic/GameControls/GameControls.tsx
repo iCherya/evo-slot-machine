@@ -8,9 +8,10 @@ import { Button } from '@/components/shared/Button';
 import styles from './GameControls.module.scss';
 
 export const GameControls: React.FC = observer(() => {
-  const { user } = useStore();
-
+  const { user, slotMachine } = useStore();
   const { depositValue, betValue } = CONTENT.domain;
+
+  const whenSpinButtonDisabled = !user.canSpin || user.balance < betValue || slotMachine.isSpinning;
 
   const onDeposit = useCallback(() => {
     user.deposit(depositValue);
@@ -20,22 +21,17 @@ export const GameControls: React.FC = observer(() => {
     user.withdraw();
   }, [user]);
 
-  const onPlaceBet = useCallback(() => {
+  const onSpin = useCallback(() => {
     user.placeBet(betValue);
-  }, [user, betValue]);
+    slotMachine.spin();
+  }, [user, betValue, slotMachine]);
 
   return (
     <div className={styles.gameControls}>
       <Button className={styles.deposit} action={onDeposit}>
         Deposit
       </Button>
-      <Button
-        className={styles.spin}
-        action={onPlaceBet}
-        type="secondary"
-        size="large"
-        disabled={!user.canSpin || user.balance < betValue}
-      >
+      <Button className={styles.spin} action={onSpin} type="secondary" size="large" disabled={whenSpinButtonDisabled}>
         SPIN
       </Button>
       <Button className={styles.withdraw} action={onWithdraw} disabled={!user.balance}>

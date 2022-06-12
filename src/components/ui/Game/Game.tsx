@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { GameControls } from '@/components/logic/GameControls';
-import { MachineReels } from '@/components/logic/MachineReels';
+import { SlotMachine } from '@/components/logic/SlotMachine';
 
 export const Game: React.FC = () => {
   return (
     <>
-      <MachineReels />
+      <SlotMachine />
       <GameControls />
     </>
   );

@@ -24,9 +24,9 @@ export const AnimatedNumber: React.FC<Props> = ({ number = 0, duration = 500, fo
     const now = +new Date();
     const endNumber = animationOptions.toNumber;
     const timeRange = endTime - now;
-    const nums = (timeRange / 1000) * 30 - 2;
+    const times = (timeRange / 1000) * 30;
     const remaining = endNumber - animatedValue;
-    const inc = nums > 0 ? remaining / nums : remaining;
+    const inc = times > 0 ? remaining / times : remaining;
     let nextNumber = animatedValue + inc;
 
     if (endTime - now < 50) {
