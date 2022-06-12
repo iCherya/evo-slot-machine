@@ -1,4 +1,4 @@
-import { getRandomNumberBetween } from '@/utils';
+import { getRandomNumberBetween, shuffleArray, rotateArray } from '@/utils';
 
 describe('utils', () => {
   describe('getRandomNumberBetween', () => {
@@ -17,6 +17,32 @@ describe('utils', () => {
 
       expect(resultSmaller).toBe(20);
       expect(resultEquals).toBe(10);
+    });
+  });
+
+  describe('shuffleArray', () => {
+    it('should shuffle an array', () => {
+      const array = [1, 2, 3, 4, 5];
+      const result = shuffleArray(array);
+
+      expect(result).not.toEqual(array);
+      expect(result).toEqual(expect.arrayContaining([1, 2, 3, 4, 5]));
+    });
+  });
+
+  describe('rotateArray', () => {
+    it('should rotate an array defined times', () => {
+      const array = [1, 2, 3, 4, 5];
+      const result = rotateArray(array, 2);
+
+      expect(result).toEqual([4, 5, 1, 2, 3]);
+    });
+
+    it('should rotate an array once if times is not defined', () => {
+      const array = [1, 2, 3, 4, 5];
+      const result = rotateArray(array);
+
+      expect(result).toEqual([5, 1, 2, 3, 4]);
     });
   });
 });

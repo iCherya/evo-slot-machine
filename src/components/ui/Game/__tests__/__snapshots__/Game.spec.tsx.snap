@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game should render MachineReels and GameControls components 1`] = `
+exports[`Game should render SlotMachine and GameControls components 1`] = `
 <div>
   <div
-    data-testid="machine-reels"
+    data-testid="slot-machine"
   />
   <div
     data-testid="game-controls"

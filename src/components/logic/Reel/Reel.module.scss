@@ -6,6 +6,11 @@
   overflow: hidden;
   flex: 1;
   box-shadow: 0 0 0 3px $color-base-dark;
+
+  &.rotate .slotsWrapper {
+    transition: margin-top 0.04s linear;
+    margin-top: 100px;
+  }
 }
 
 .slotsWrapper {

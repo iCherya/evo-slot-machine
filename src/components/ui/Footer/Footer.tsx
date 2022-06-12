@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   const { description, social } = CONTENT.ui.footer;
 
   const onSettingsButtonClick = useCallback(() => {
-    console.log('Settings button clicked');
+    console.log('🚀 Settings button clicked');
   }, []);
 
   return (
