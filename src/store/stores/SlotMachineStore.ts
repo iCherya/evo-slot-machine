@@ -19,14 +19,16 @@ export class SlotMachineStore {
 
   public spin(): void {
     this.isSpinning = true;
+
+    this.reels.forEach((reel) => {
+      reel.reelSlots[DOMAIN.reelsCount - 1].isWin = false;
+    });
   }
 
   public spinEnd(reelIndex: number): void {
     this.spinResults.add(reelIndex);
 
     if (this.spinResults.size === this.reelsCount) {
-      console.log('🚀 all reels finished rotation');
-
       this.isSpinning = false;
       this.spinResults.clear();
 
@@ -35,22 +37,35 @@ export class SlotMachineStore {
   }
 
   private checkWin(): void {
-    const items = this.reels.map((reel) => reel.reelSlots[2].name);
+    console.log(this.reels);
+
+    const items = this.reels.map((reel) => reel.reelSlots[DOMAIN.reelsCount - 1].name);
     const barItemsCount = items.filter((item) => item === 'bar').length;
     let winAmount = 0;
 
     if (barItemsCount) {
       winAmount += barItemsCount * this.getPriceBySlotName('bar');
+
+      this.reels.forEach((reel) => {
+        const currentItem = reel.reelSlots[DOMAIN.reelsCount - 1];
+        if (currentItem.name === 'bar') {
+          currentItem.isWin = true;
+        }
+      });
     }
 
     const isAllItemsInRow = new Set(items).size === 1;
     if (isAllItemsInRow) {
       winAmount += items.length * this.getPriceBySlotName(items[0]) * DOMAIN.rowWinMultiplier;
+
+      this.reels.forEach((reel) => {
+        reel.reelSlots[DOMAIN.reelsCount - 1].isWin = true;
+      });
     }
 
     if (winAmount) {
       user.deposit(winAmount);
-      game.hasWon(winAmount);
+      game.setWin(winAmount);
     }
   }
 

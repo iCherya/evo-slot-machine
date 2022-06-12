@@ -9,6 +9,8 @@ describe('GameStore', () => {
     const store = new GameStore();
 
     expect(store.isStarted).toBe(false);
+    expect(store.isWin).toBe(false);
+    expect(store.winAmount).toBe(0);
   });
 
   it('should have a method startGame that sets isStarted to true', () => {
@@ -17,5 +19,24 @@ describe('GameStore', () => {
     store.startGame();
 
     expect(store.isStarted).toBe(true);
+  });
+
+  it('should have a method setWin that sets isWin to true and winAmount to the appropriate value', () => {
+    const store = new GameStore();
+
+    store.setWin(10);
+
+    expect(store.isWin).toBe(true);
+    expect(store.winAmount).toBe(10);
+  });
+
+  it('should have a method resetWin that sets isWin to false and winAmount to 0', () => {
+    const store = new GameStore();
+
+    store.setWin(10);
+    store.resetWin();
+
+    expect(store.isWin).toBe(false);
+    expect(store.winAmount).toBe(0);
   });
 });

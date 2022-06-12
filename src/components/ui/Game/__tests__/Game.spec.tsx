@@ -21,8 +21,8 @@ describe('Game', () => {
   it('should render SlotMachine and GameControls components', () => {
     mockedUseStore.mockImplementationOnce(() => ({
       game: {
-        showWinAnimation: false,
-        winCount: 0,
+        isWin: false,
+        winAmount: 0,
       },
     }));
 
@@ -37,8 +37,8 @@ describe('Game', () => {
   it('should render banner with win count if showWinAnimation set to true', () => {
     mockedUseStore.mockImplementationOnce(() => ({
       game: {
-        showWinAnimation: true,
-        winCount: 42,
+        isWin: true,
+        winAmount: 42,
       },
     }));
 

@@ -45,8 +45,8 @@ export const Reel: React.FC<Props> = observer(({ reelIndex }) => {
     <>
       <div className={classNames(styles.reel, animateRotation && styles.rotate)} onTransitionEnd={onTransitionEnd}>
         <div className={styles.slotsWrapper}>
-          {currentReel.reelSlots.slice(0, reelsCount * 2 - 1).map(({ id, image, name }) => (
-            <img key={id} className={styles.slot} src={image} alt={`Slot-${name}`} />
+          {currentReel.reelSlots.slice(0, reelsCount * 2 - 1).map(({ id, image, name, isWin }) => (
+            <img key={id} className={classNames(styles.slot, isWin && styles.win)} src={image} alt={`Slot-${name}`} />
           ))}
         </div>
       </div>

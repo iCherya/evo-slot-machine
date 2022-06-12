@@ -14,9 +14,9 @@ export const Game: React.FC = observer(() => {
     <>
       <SlotMachine />
       <GameControls />
-      {game.showWinAnimation && (
+      {game.isWin && (
         <div className={styles.banner} data-testid="banner">
-          +{game.winCount}
+          +{game.winAmount}
         </div>
       )}
     </>
