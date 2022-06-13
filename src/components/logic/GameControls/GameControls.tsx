@@ -22,19 +22,46 @@ export const GameControls: React.FC = observer(() => {
   }, [user]);
 
   const onSpin = useCallback(() => {
-    user.placeBet(betValue);
     slotMachine.spin();
-  }, [user, betValue, slotMachine]);
+  }, [slotMachine]);
+
+  const onInfiniteSpin = useCallback(() => {
+    slotMachine.infiniteSpin();
+  }, [slotMachine]);
+
+  const increaseSpinCountHandler = useCallback(() => {
+    slotMachine.updateSpinCount(1);
+  }, [slotMachine]);
+
+  const decreaseSpinCountHandler = useCallback(() => {
+    if (slotMachine.infiniteSpinCount > 0) {
+      slotMachine.updateSpinCount(-1);
+    }
+  }, [slotMachine]);
 
   return (
     <div className={styles.gameControls}>
-      <Button className={styles.deposit} action={onDeposit}>
-        Deposit
+      <Button action={onDeposit}>Deposit</Button>
+      <Button action={onSpin} type="secondary" size="large" disabled={isSpinButtonDisabled}>
+        SPIN ONCE
       </Button>
-      <Button className={styles.spin} action={onSpin} type="secondary" size="large" disabled={isSpinButtonDisabled}>
-        SPIN
+
+      <div className={styles.number}>
+        <button onClick={decreaseSpinCountHandler}>-</button>
+        <input type="text" value={slotMachine.infiniteSpinCount} readOnly={true} />
+        <button onClick={increaseSpinCountHandler}>+</button>
+      </div>
+
+      <Button
+        action={onInfiniteSpin}
+        type="secondary"
+        size="small"
+        disabled={isSpinButtonDisabled || slotMachine.infiniteSpinCount === 0}
+        className={styles.infinity}
+      >
+        ∞
       </Button>
-      <Button className={styles.withdraw} action={onWithdraw} disabled={!user.balance}>
+      <Button action={onWithdraw} disabled={!user.balance}>
         Withdraw
       </Button>
     </div>

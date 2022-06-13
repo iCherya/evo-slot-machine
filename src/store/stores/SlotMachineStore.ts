@@ -6,8 +6,10 @@ import { ReelStore } from '@/store/stores/ReelStore';
 
 export class SlotMachineStore {
   public reels: ReelStore[] = [];
-  public isSpinning = false;
   public reelsCount = DOMAIN.initialReelsCount;
+  public isSpinning = false;
+  public isInfiniteSpinMode = false;
+  public infiniteSpinCount = 1;
   protected rootStore: RootStoreType;
   private middleSlotIndex = Math.floor(DOMAIN.renderSlotsPerReel / 2);
   private spinResults = new Set();
@@ -25,6 +27,15 @@ export class SlotMachineStore {
   }
 
   public spin(): void {
+    if (this.isInfiniteSpinMode) {
+      this.updateSpinCount(-1);
+    }
+
+    if (this.infiniteSpinCount === 0) {
+      this.isInfiniteSpinMode = false;
+    }
+
+    this.rootStore.user.placeBet(DOMAIN.betValue);
     this.isSpinning = true;
 
     this.rootStore.audio.stopAllAudio();
@@ -33,6 +44,11 @@ export class SlotMachineStore {
     this.reels.forEach((reel) => {
       reel.reelSlots[this.middleSlotIndex].isWin = false;
     });
+  }
+
+  public infiniteSpin(): void {
+    this.isInfiniteSpinMode = true;
+    this.spin();
   }
 
   public spinEnd(reelIndex: number): void {
@@ -47,7 +63,15 @@ export class SlotMachineStore {
       this.spinResults.clear();
 
       this.checkWin();
+
+      if (this.isInfiniteSpinMode) {
+        setTimeout(() => this.spin(), 700);
+      }
     }
+  }
+
+  public updateSpinCount(diffValue: number): void {
+    this.infiniteSpinCount += diffValue;
   }
 
   private checkWin(): void {
