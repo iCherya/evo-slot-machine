@@ -9,7 +9,8 @@ Demo: https://evo-slot-machine.vercel.app
 - Slot machine simulator with animations
 - From 3 to 7 spinning reels
 - Audio effects
-- Auto spin feature
+- Auto spin
+- Translations
 
 ## Technologies used
 

@@ -1,7 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import { Welcome } from '@/components/ui/Welcome';
-import { CONTENT } from '@/config';
 
 const mockedStartGame = jest.fn();
 
@@ -22,6 +21,11 @@ jest.mock('@/components/ui/Button', () => ({
   )),
 }));
 
+jest.mock('@/components/logic/Translations', () => ({
+  // eslint-disable-next-line @typescript-eslint/member-delimiter-style
+  TranslateText: ({ translationKey }: { translationKey: string }) => <span>{translationKey}</span>,
+}));
+
 describe('Welcome', () => {
   it('should render main welcome banner', () => {
     const { getByAltText } = render(<Welcome />);
@@ -33,7 +37,7 @@ describe('Welcome', () => {
 
   it('should render starting game button', () => {
     const { getByText } = render(<Welcome />);
-    const startGameButton = getByText(CONTENT.ui.welcome.buttonText);
+    const startGameButton = getByText('ui.welcome.play.button.text');
 
     expect(startGameButton).toBeInTheDocument();
     expect(startGameButton).toMatchSnapshot();

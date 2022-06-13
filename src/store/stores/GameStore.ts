@@ -14,6 +14,10 @@ export class GameStore {
     this.isStarted = true;
   }
 
+  public stopGame(): void {
+    this.isStarted = false;
+  }
+
   public toggleSettings(): void {
     this.isSettingsOpened = !this.isSettingsOpened;
   }

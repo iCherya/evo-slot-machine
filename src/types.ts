@@ -9,3 +9,5 @@ export interface ISlotData {
   name: string;
   isWin: boolean;
 }
+
+export type Language = 'en' | 'uk';

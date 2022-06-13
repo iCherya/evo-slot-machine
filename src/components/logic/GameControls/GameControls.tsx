@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '@/store';
 import { DOMAIN } from '@/config';
 import { Button } from '@/components/ui/Button';
+import { TranslateText } from '@/components/logic/Translations';
 
 import styles from './GameControls.module.scss';
 
@@ -41,9 +42,11 @@ export const GameControls: React.FC = observer(() => {
 
   return (
     <div className={styles.gameControls}>
-      <Button action={onDeposit}>Deposit</Button>
+      <Button action={onDeposit}>
+        <TranslateText translationKey="ui.game.deposit.button.text" />
+      </Button>
       <Button action={onSpin} type="secondary" size="large" disabled={isSpinButtonDisabled}>
-        SPIN ONCE
+        <TranslateText translationKey="ui.game.spin.button.text" />
       </Button>
 
       <div className={styles.number}>
@@ -59,10 +62,10 @@ export const GameControls: React.FC = observer(() => {
         disabled={isSpinButtonDisabled || slotMachine.infiniteSpinCount === 0}
         className={styles.infinity}
       >
-        ∞
+        <TranslateText translationKey="ui.game.infiniteSpin.button.text" />
       </Button>
       <Button action={onWithdraw} disabled={!user.balance}>
-        Withdraw
+        <TranslateText translationKey="ui.game.withdraw.button.text" />
       </Button>
     </div>
   );
