@@ -3,16 +3,18 @@ import React, { useCallback } from 'react';
 import { CONTENT, BUTTON_OPTIONS } from '@/config';
 import { Button } from '@/components/shared/Button';
 
+import { useStore } from '@/store';
 import evolutionLogo from '/assets/evolution-logo.svg';
 
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
+  const { game } = useStore();
   const { description, social } = CONTENT.ui.footer;
 
   const onSettingsButtonClick = useCallback(() => {
-    console.log('🚀 Settings button clicked');
-  }, []);
+    game.toggleSettings();
+  }, [game]);
 
   return (
     <footer className={styles.footer}>

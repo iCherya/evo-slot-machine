@@ -10,10 +10,14 @@ jest.mock('@/components/ui/Footer', () => ({
   Footer: () => <div data-testid="footer" />,
 }));
 
+jest.mock('@/components/ui/Settings', () => ({
+  Settings: () => <div data-testid="settings" />,
+}));
+
 describe('Layout', () => {
   const Child = () => <div data-testid="child">Child component</div>;
 
-  it('should render Header and Footer components', () => {
+  it('should render Header, Footer and Settings components', () => {
     const { container, getAllByTestId } = render(
       <Layout>
         <Child />
@@ -22,6 +26,7 @@ describe('Layout', () => {
 
     expect(getAllByTestId('header').length).toBe(1);
     expect(getAllByTestId('footer').length).toBe(1);
+    expect(getAllByTestId('settings').length).toBe(1);
 
     expect(container).toMatchSnapshot();
   });

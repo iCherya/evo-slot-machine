@@ -3,7 +3,8 @@ export const DOMAIN = {
   depositValue: 100,
   betValue: 10,
   rowWinMultiplier: 2,
-  reelsCount: 3,
+  initialReelsCount: 3,
+  renderSlotsPerReel: 5,
   turnoverCount: 10,
   turnoverDuration: 200,
   slotsConfig: [

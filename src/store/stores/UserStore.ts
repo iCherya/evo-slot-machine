@@ -1,14 +1,15 @@
 import { makeAutoObservable } from 'mobx';
 
-import { DOMAIN } from '@/config';
-import { handleError } from '@/utils';
+import { RootStoreType } from '@/store/stores';
 
 export class UserStore {
   public balance = 0;
   public canSpin = false;
-  public coinAudio = DOMAIN.audio.coin;
+  protected rootStore: RootStoreType;
 
-  public constructor() {
+  public constructor(rootStore: RootStoreType) {
+    this.rootStore = rootStore;
+
     makeAutoObservable(this);
   }
 
@@ -28,7 +29,7 @@ export class UserStore {
     this.updateBalance(value);
     this.canSpin = true;
 
-    this.coinAudio.play().catch(handleError);
+    this.rootStore.audio.playSound('coin');
   }
 
   public withdraw(): void {
@@ -40,5 +41,3 @@ export class UserStore {
     this.balance += value;
   }
 }
-
-export const user = new UserStore();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Layout should render Header and Footer components 1`] = `
+exports[`Layout should render Header, Footer and Settings components 1`] = `
 <div>
   <div>
     <div
@@ -15,6 +15,9 @@ exports[`Layout should render Header and Footer components 1`] = `
     </main>
     <div
       data-testid="footer"
+    />
+    <div
+      data-testid="settings"
     />
   </div>
 </div>
@@ -45,6 +48,9 @@ exports[`Layout should render children components 1`] = `
     </main>
     <div
       data-testid="footer"
+    />
+    <div
+      data-testid="settings"
     />
   </div>
 </div>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
+import { Settings } from '@/components/ui/Settings';
 
 import { IProviderProps } from '@/types';
 
@@ -13,6 +14,7 @@ export const Layout: React.FC<IProviderProps> = ({ children }) => {
       <Header />
       <main className={styles.children}>{children}</main>
       <Footer />
+      <Settings />
     </div>
   );
 };
