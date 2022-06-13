@@ -1,8 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 
+import { DOMAIN } from '@/config';
+import { handleError } from '@/utils';
+
 export class UserStore {
   public balance = 0;
   public canSpin = false;
+  public coinAudio = DOMAIN.audio.coin;
 
   public constructor() {
     makeAutoObservable(this);
@@ -23,6 +27,8 @@ export class UserStore {
   public deposit(value: number): void {
     this.updateBalance(value);
     this.canSpin = true;
+
+    this.coinAudio.play().catch(handleError);
   }
 
   public withdraw(): void {
