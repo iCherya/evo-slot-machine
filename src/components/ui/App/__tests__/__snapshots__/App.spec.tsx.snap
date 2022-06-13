@@ -1,13 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App should be wrapped by LanguageProvider 1`] = `
+<div>
+  <div
+    data-testid="languageProvider"
+  >
+    <div
+      data-testid="layout"
+    >
+      <div
+        data-testid="welcome"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`App should render Game component wrapped by Layout if game has been started 1`] = `
 <div>
   <div
-    data-testid="layout"
+    data-testid="languageProvider"
   >
     <div
-      data-testid="game"
-    />
+      data-testid="layout"
+    >
+      <div
+        data-testid="game"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -15,11 +35,15 @@ exports[`App should render Game component wrapped by Layout if game has been sta
 exports[`App should render Welcome component wrapped by Layout if game is not started 1`] = `
 <div>
   <div
-    data-testid="layout"
+    data-testid="languageProvider"
   >
     <div
-      data-testid="welcome"
-    />
+      data-testid="layout"
+    >
+      <div
+        data-testid="welcome"
+      />
+    </div>
   </div>
 </div>
 `;

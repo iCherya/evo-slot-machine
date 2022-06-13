@@ -5,7 +5,9 @@ exports[`Header should render header title if game is not started 1`] = `
   class=""
   data-testid="header"
 >
-  JACKPOT
+  <span>
+    ui.header.title
+  </span>
 </header>
 `;
 

@@ -1,11 +1,11 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import { Footer } from '@/components/ui/Footer';
-import { CONTENT } from '@/config';
 import { useStore } from '@/store';
 
 const mockedUseStore = useStore as jest.Mock;
 const toggleSettings = jest.fn();
+const stopGame = jest.fn();
 
 jest.mock('@/store', () => ({
   useStore: jest.fn(),
@@ -14,11 +14,17 @@ jest.mock('@/store', () => ({
 mockedUseStore.mockImplementation(() => ({
   game: {
     toggleSettings,
+    stopGame,
   },
 }));
 
-jest.mock('@/components/shared/Button', () => ({
+jest.mock('@/components/ui/Button', () => ({
   Button: () => <button data-testid="button" />,
+}));
+
+jest.mock('@/components/logic/Translations', () => ({
+  // eslint-disable-next-line @typescript-eslint/member-delimiter-style
+  TranslateText: ({ translationKey }: { translationKey: string }) => <span>{translationKey}</span>,
 }));
 
 describe('Footer', () => {
@@ -28,9 +34,18 @@ describe('Footer', () => {
     const credentials = getByTestId('credentials');
 
     expect(credentials.firstChild?.nodeName).toBe('IMG');
-    expect(credentials.lastChild?.textContent).toBe(CONTENT.ui.footer.description);
+    expect(credentials.lastChild?.textContent).toBe('ui.footer.description');
 
     expect(credentials).toMatchSnapshot();
+  });
+
+  it('should handle logo click', () => {
+    const { getByTestId } = render(<Footer />);
+
+    const logo = getByTestId('logo');
+    fireEvent(logo, new MouseEvent('click', { bubbles: true }));
+
+    expect(stopGame).toHaveBeenCalled();
   });
 
   it('should render settings button', () => {

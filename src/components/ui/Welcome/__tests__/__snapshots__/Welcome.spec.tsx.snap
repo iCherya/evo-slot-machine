@@ -7,11 +7,9 @@ exports[`Welcome should render main welcome banner 1`] = `
 `;
 
 exports[`Welcome should render starting game button 1`] = `
-<button
-  type="secondary"
->
-  PLAY!
-</button>
+<span>
+  ui.welcome.play.button.text
+</span>
 `;
 
 exports[`Welcome should start the game when button clicked 1`] = `
@@ -26,7 +24,9 @@ exports[`Welcome should start the game when button clicked 1`] = `
       <button
         type="secondary"
       >
-        PLAY!
+        <span>
+          ui.welcome.play.button.text
+        </span>
       </button>
     </div>
   </div>

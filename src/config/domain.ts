@@ -12,7 +12,7 @@ export const DOMAIN = {
     { id: 2, price: 8, image: 'assets/slots/slot-2-512.png', name: 'dollar', isWin: false },
     { id: 3, price: 16, image: 'assets/slots/slot-3-512.png', name: 'seven', isWin: false },
     { id: 4, price: 32, image: 'assets/slots/slot-4-512.png', name: 'grape', isWin: false },
-    { id: 5, price: 10, image: 'assets/slots/slot-5-512.png', name: 'bar', isWin: false },
+    { id: 5, price: 40, image: 'assets/slots/slot-5-512.png', name: 'bar', isWin: false },
   ],
   audio: {
     coin: new Audio('https://cdn.freesound.org/previews/512/512216_10756146-lq.mp3'),

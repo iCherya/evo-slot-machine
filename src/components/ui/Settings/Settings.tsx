@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
+import { LanguageSwitchButton, TranslateText } from '@/components/logic/Translations';
 
 import styles from './Settings.module.scss';
 
@@ -33,7 +34,9 @@ export const Settings: React.FC = observer(() => {
     <div className={styles.wrapper} onClick={settingsCloseHandler}>
       <div className={styles.settings}>
         <div className={styles.settingsItem}>
-          <h2>Reels count</h2>
+          <h2>
+            <TranslateText translationKey="ui.settings.reelsCount.label" />
+          </h2>
           <div className={styles.reelsCountText}>{slotMachine.reelsCount}</div>
           <input
             className={styles.reelsCountRange}
@@ -46,11 +49,20 @@ export const Settings: React.FC = observer(() => {
         </div>
 
         <div className={styles.settingsItem}>
-          <h2>Music</h2>
+          <h2>
+            <TranslateText translationKey="ui.settings.audio.label" />
+          </h2>
           <label className={styles.switch}>
             <input type="checkbox" checked={!audio.isMuted} onChange={soundToggleHandler} />
             <span className={styles.slider} />
           </label>
+        </div>
+
+        <div className={styles.settingsItem}>
+          <h2>
+            <TranslateText translationKey="ui.settings.language.label" />
+          </h2>
+          <LanguageSwitchButton />
         </div>
 
         <div className={styles.close} onClick={settingsCloseHandler} />

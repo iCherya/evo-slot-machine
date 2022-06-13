@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 
 import { Header } from '@/components/ui/Header';
 import { useStore } from '@/store';
-import { CONTENT } from '@/config';
 
 const mockedUseStore = useStore as jest.Mock;
 
@@ -12,6 +11,11 @@ jest.mock('@/store', () => ({
 
 jest.mock('@/components/logic/AnimatedNumber', () => ({
   AnimatedNumber: jest.fn(({ number }) => <div data-testid="animated-number">{number}</div>),
+}));
+
+jest.mock('@/components/logic/Translations', () => ({
+  // eslint-disable-next-line @typescript-eslint/member-delimiter-style
+  TranslateText: ({ translationKey }: { translationKey: string }) => <span>{translationKey}</span>,
 }));
 
 describe('Header', () => {
@@ -25,7 +29,7 @@ describe('Header', () => {
     const { getByTestId } = render(<Header />);
     const header = getByTestId('header');
 
-    expect(header.textContent).toBe(CONTENT.ui.header.title);
+    expect(header.textContent).toBe('ui.header.title');
 
     expect(header).toMatchSnapshot();
   });

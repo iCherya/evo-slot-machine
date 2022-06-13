@@ -6,10 +6,11 @@ exports[`Footer should render credentials section 1`] = `
 >
   <img
     alt="Evolution logo"
+    data-testid="logo"
   />
-  <p>
-    TypeScript Bootcamp
-  </p>
+  <span>
+    ui.footer.description
+  </span>
 </div>
 `;
 
