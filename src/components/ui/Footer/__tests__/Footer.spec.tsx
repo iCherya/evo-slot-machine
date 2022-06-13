@@ -1,7 +1,21 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { Footer } from '@/components/ui/Footer';
 import { CONTENT } from '@/config';
+import { useStore } from '@/store';
+
+const mockedUseStore = useStore as jest.Mock;
+const toggleSettings = jest.fn();
+
+jest.mock('@/store', () => ({
+  useStore: jest.fn(),
+}));
+
+mockedUseStore.mockImplementation(() => ({
+  game: {
+    toggleSettings,
+  },
+}));
 
 jest.mock('@/components/shared/Button', () => ({
   Button: () => <button data-testid="button" />,
@@ -26,6 +40,15 @@ describe('Footer', () => {
     expect(settingsButton.length).toBe(1);
 
     expect(settingsButton).toMatchSnapshot();
+  });
+
+  it('should handle settings button click', () => {
+    const { getByTestId } = render(<Footer />);
+
+    const settingsButton = getByTestId('settings-button');
+    fireEvent(settingsButton, new MouseEvent('click', { bubbles: true }));
+
+    expect(toggleSettings).toHaveBeenCalled();
   });
 
   it('should render social buttons', () => {

@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Reel: React.FC<Props> = observer(({ reelIndex }) => {
-  const { turnoverCount, turnoverDuration, reelsCount } = DOMAIN;
+  const { turnoverCount, turnoverDuration, renderSlotsPerReel } = DOMAIN;
 
   const [animateRotation, setAnimateRotation] = React.useState(false);
   const [turnoversLeft, setTurnoversLeft] = React.useState(turnoverCount + reelIndex);
@@ -45,7 +45,7 @@ export const Reel: React.FC<Props> = observer(({ reelIndex }) => {
     <>
       <div className={classNames(styles.reel, animateRotation && styles.rotate)} onTransitionEnd={onTransitionEnd}>
         <div className={styles.slotsWrapper}>
-          {currentReel.reelSlots.slice(0, reelsCount * 2 - 1).map(({ id, image, name, isWin }) => (
+          {currentReel.reelSlots.slice(0, renderSlotsPerReel).map(({ id, image, name, isWin }) => (
             <img key={id} className={classNames(styles.slot, isWin && styles.win)} src={image} alt={`Slot-${name}`} />
           ))}
         </div>

@@ -8,18 +8,18 @@
   box-shadow: 0 0 0 3px $color-base-dark;
 
   &.rotate .slotsWrapper {
-    transition: margin-top 0.04s linear;
-    margin-top: $slot-size * 2;
+    top: calc(50% + $slot-size);
+    transition: top 0.1s linear;
   }
-}
 
-.slotsWrapper {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .slotsWrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .slot {

@@ -1,41 +1,46 @@
 import { makeAutoObservable } from 'mobx';
 
 import { DOMAIN } from '@/config';
+import { RootStoreType } from '@/store/stores';
 import { ReelStore } from '@/store/stores/ReelStore';
-import { user } from '@/store/stores/UserStore';
-import { game } from '@/store/stores/GameStore';
-import { handleError } from '@/utils';
 
 export class SlotMachineStore {
   public reels: ReelStore[] = [];
   public isSpinning = false;
+  public reelsCount = DOMAIN.initialReelsCount;
+  protected rootStore: RootStoreType;
+  private middleSlotIndex = Math.floor(DOMAIN.renderSlotsPerReel / 2);
   private spinResults = new Set();
-  private reelsCount = DOMAIN.reelsCount;
-  private audio = DOMAIN.audio;
 
-  public constructor() {
+  public constructor(rootStore: RootStoreType) {
+    this.rootStore = rootStore;
     this.reels = new Array(this.reelsCount).fill(null).map((_, i) => new ReelStore(i));
 
     makeAutoObservable(this);
   }
 
+  public updateReelsCount(count: number): void {
+    this.reelsCount = count;
+    this.reels = new Array(count).fill(null).map((_, i) => new ReelStore(i));
+  }
+
   public spin(): void {
     this.isSpinning = true;
 
-    this.stopAllAudio();
-    this.audio.spin.play().catch(handleError);
+    this.rootStore.audio.stopAllAudio();
+    this.rootStore.audio.playSound('spin');
 
     this.reels.forEach((reel) => {
-      reel.reelSlots[DOMAIN.reelsCount - 1].isWin = false;
+      reel.reelSlots[this.middleSlotIndex].isWin = false;
     });
   }
 
   public spinEnd(reelIndex: number): void {
     this.spinResults.add(reelIndex);
-    this.audio.spin.pause();
+    this.rootStore.audio.pauseSound('spin');
 
-    this.audio.spinEnd.play().catch(handleError);
-    this.audio.spinEnd.currentTime = 0;
+    this.rootStore.audio.playSound('spinEnd');
+    this.rootStore.audio.setCurrentTime('spinEnd', 0);
 
     if (this.spinResults.size === this.reelsCount) {
       this.isSpinning = false;
@@ -46,7 +51,7 @@ export class SlotMachineStore {
   }
 
   private checkWin(): void {
-    const items = this.reels.map((reel) => reel.reelSlots[DOMAIN.reelsCount - 1].name);
+    const items = this.reels.map((reel) => reel.reelSlots[this.middleSlotIndex].name);
     const barItemsCount = items.filter((item) => item === 'bar').length;
     let winAmount = 0;
 
@@ -54,13 +59,14 @@ export class SlotMachineStore {
       winAmount += barItemsCount * this.getPriceBySlotName('bar');
 
       this.reels.forEach((reel) => {
-        const currentItem = reel.reelSlots[DOMAIN.reelsCount - 1];
+        const currentItem = reel.reelSlots[this.middleSlotIndex];
+
         if (currentItem.name === 'bar') {
           currentItem.isWin = true;
         }
       });
 
-      this.audio.bar.play().catch(handleError);
+      this.rootStore.audio.playSound('bar');
     }
 
     const isAllItemsInRow = new Set(items).size === 1;
@@ -68,15 +74,15 @@ export class SlotMachineStore {
       winAmount += items.length * this.getPriceBySlotName(items[0]) * DOMAIN.rowWinMultiplier;
 
       this.reels.forEach((reel) => {
-        reel.reelSlots[DOMAIN.reelsCount - 1].isWin = true;
+        reel.reelSlots[this.middleSlotIndex].isWin = true;
       });
 
-      this.audio.win.play().catch(handleError);
+      this.rootStore.audio.playSound('win');
     }
 
     if (winAmount) {
-      user.deposit(winAmount);
-      game.setWin(winAmount);
+      this.rootStore.user.deposit(winAmount);
+      this.rootStore.game.setWin(winAmount);
     }
   }
 
@@ -85,18 +91,4 @@ export class SlotMachineStore {
 
     return price;
   }
-
-  private stopAllAudio(): void {
-    this.audio.spin.pause();
-    this.audio.spinEnd.pause();
-    this.audio.bar.pause();
-    this.audio.win.pause();
-
-    this.audio.spin.currentTime = 0;
-    this.audio.spinEnd.currentTime = 0;
-    this.audio.bar.currentTime = 0;
-    this.audio.win.currentTime = 0;
-  }
 }
-
-export const slotMachine = new SlotMachineStore();

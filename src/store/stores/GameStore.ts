@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 export class GameStore {
   public isStarted = false;
+  public isSettingsOpened = false;
   public isWin = false;
   public winAmount = 0;
 
@@ -11,6 +12,10 @@ export class GameStore {
 
   public startGame(): void {
     this.isStarted = true;
+  }
+
+  public toggleSettings(): void {
+    this.isSettingsOpened = !this.isSettingsOpened;
   }
 
   public setWin(count: number): void {
@@ -25,5 +30,3 @@ export class GameStore {
     this.winAmount = 0;
   }
 }
-
-export const game = new GameStore();
