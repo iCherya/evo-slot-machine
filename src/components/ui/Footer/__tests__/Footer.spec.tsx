@@ -17,7 +17,7 @@ mockedUseStore.mockImplementation(() => ({
   },
 }));
 
-jest.mock('@/components/shared/Button', () => ({
+jest.mock('@/components/ui/Button', () => ({
   Button: () => <button data-testid="button" />,
 }));
 

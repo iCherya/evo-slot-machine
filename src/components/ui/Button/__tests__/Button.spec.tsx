@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Button } from '@/components/shared/Button/Button';
+import { Button } from '@/components/ui/Button';
 
 jest.mock('react-awesome-button', () => ({
   ...jest.requireActual,

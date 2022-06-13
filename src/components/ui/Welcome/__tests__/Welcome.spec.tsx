@@ -13,7 +13,7 @@ jest.mock('@/store', () => ({
   })),
 }));
 
-jest.mock('@/components/shared/Button', () => ({
+jest.mock('@/components/ui/Button', () => ({
   Button: jest.fn(({ children, action, ...props }) => (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <button onClick={action} {...props}>

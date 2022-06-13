@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
 import { CONTENT } from '@/config';
-import { Button } from '@/components/shared/Button';
+import { Button } from '@/components/ui/Button';
 
 import welcomeBanner from '/assets/welcome-banner.jpeg';
 
