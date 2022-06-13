@@ -1,0 +1,25 @@
+@import '@/styles/variables.scss';
+
+.banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: $font-size-large;
+  font-weight: $font-weight-base * 2.2;
+  letter-spacing: 0.2rem;
+  color: $color-accents-dark;
+  text-shadow: 1px 2px 1px $color-base-dark;
+  animation: bumping 2s infinite;
+}
+
+@keyframes bumping {
+  0% {
+    transform: translateY(-$slot-size * 1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-$slot-size * 3);
+    opacity: 0;
+  }
+}

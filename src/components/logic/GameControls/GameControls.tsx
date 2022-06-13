@@ -2,16 +2,16 @@ import React, { useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
-import { CONTENT } from '@/config/content';
+import { DOMAIN } from '@/config';
 import { Button } from '@/components/shared/Button';
 
 import styles from './GameControls.module.scss';
 
 export const GameControls: React.FC = observer(() => {
   const { user, slotMachine } = useStore();
-  const { depositValue, betValue } = CONTENT.domain;
+  const { depositValue, betValue } = DOMAIN;
 
-  const whenSpinButtonDisabled = !user.canSpin || user.balance < betValue || slotMachine.isSpinning;
+  const isSpinButtonDisabled = !user.canSpin || user.balance < betValue || slotMachine.isSpinning;
 
   const onDeposit = useCallback(() => {
     user.deposit(depositValue);
@@ -31,7 +31,7 @@ export const GameControls: React.FC = observer(() => {
       <Button className={styles.deposit} action={onDeposit}>
         Deposit
       </Button>
-      <Button className={styles.spin} action={onSpin} type="secondary" size="large" disabled={whenSpinButtonDisabled}>
+      <Button className={styles.spin} action={onSpin} type="secondary" size="large" disabled={isSpinButtonDisabled}>
         SPIN
       </Button>
       <Button className={styles.withdraw} action={onWithdraw} disabled={!user.balance}>

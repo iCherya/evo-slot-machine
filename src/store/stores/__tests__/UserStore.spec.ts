@@ -1,5 +1,14 @@
 import { UserStore } from '../UserStore';
 
+const mockPlay = jest.fn(
+  () =>
+    new Promise<void>((resolve) => {
+      resolve();
+    }),
+);
+
+HTMLMediaElement.prototype.play = mockPlay;
+
 describe('UserStore', () => {
   it('should be defined', () => {
     expect(new UserStore()).toBeDefined();
@@ -19,6 +28,13 @@ describe('UserStore', () => {
       store.deposit(42);
       expect(store.balance).toBe(42);
       expect(store.canSpin).toBe(true);
+    });
+
+    it('should play coin audio', () => {
+      const store = new UserStore();
+
+      store.deposit(42);
+      expect(mockPlay).toHaveBeenCalled();
     });
   });
 

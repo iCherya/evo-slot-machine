@@ -29,3 +29,8 @@ export const rotateArray = <T>(array: T[], times = 1): T[] => {
 
   return array;
 };
+
+export const handleError = (err: Error): void => {
+  // eslint-disable-next-line no-console
+  console.error('Error:', err);
+};

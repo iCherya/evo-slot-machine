@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Header } from '@/components/ui/Header';
 import { useStore } from '@/store';
-import { CONTENT } from '@/config/content';
+import { CONTENT } from '@/config';
 
 const mockedUseStore = useStore as jest.Mock;
 

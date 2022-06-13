@@ -22,11 +22,11 @@ describe('utils', () => {
 
   describe('shuffleArray', () => {
     it('should shuffle an array', () => {
-      const array = [1, 2, 3, 4, 5];
+      const array = new Array(100).fill(0).map((_, index) => index);
       const result = shuffleArray(array);
 
       expect(result).not.toEqual(array);
-      expect(result).toEqual(expect.arrayContaining([1, 2, 3, 4, 5]));
+      expect(result).toEqual(expect.arrayContaining([...array]));
     });
   });
 

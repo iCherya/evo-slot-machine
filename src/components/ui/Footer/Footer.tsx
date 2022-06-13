@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { CONTENT } from '@/config/content';
-import { BUTTON_OPTIONS } from '@/config/buttons';
+import { CONTENT, BUTTON_OPTIONS } from '@/config';
 import { Button } from '@/components/shared/Button';
 
 import evolutionLogo from '/assets/evolution-logo.svg';

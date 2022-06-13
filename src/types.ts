@@ -7,4 +7,5 @@ export interface ISlotData {
   price: number;
   image: string;
   name: string;
+  isWin: boolean;
 }

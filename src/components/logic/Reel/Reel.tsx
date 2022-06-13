@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from '@/store';
-import { CONTENT } from '@/config/content';
+import { DOMAIN } from '@/config';
 
 import styles from './Reel.module.scss';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Reel: React.FC<Props> = observer(({ reelIndex }) => {
-  const { turnoverCount, turnoverDuration } = CONTENT.domain;
+  const { turnoverCount, turnoverDuration, reelsCount } = DOMAIN;
 
   const [animateRotation, setAnimateRotation] = React.useState(false);
   const [turnoversLeft, setTurnoversLeft] = React.useState(turnoverCount + reelIndex);
@@ -38,15 +38,15 @@ export const Reel: React.FC<Props> = observer(({ reelIndex }) => {
     }
 
     setTurnoversLeft(turnoverCount + reelIndex);
-    slotMachine.finishRotation(reelIndex);
+    slotMachine.spinEnd(reelIndex);
   }, [currentReel, turnoverDuration, turnoverCount, turnoversLeft, reelIndex, slotMachine]);
 
   return (
     <>
       <div className={classNames(styles.reel, animateRotation && styles.rotate)} onTransitionEnd={onTransitionEnd}>
         <div className={styles.slotsWrapper}>
-          {currentReel.reelsSlots.slice(0, 5).map(({ id, image, name }) => (
-            <img key={id} className={styles.slot} src={image} alt={`Slot-${name}`} />
+          {currentReel.reelSlots.slice(0, reelsCount * 2 - 1).map(({ id, image, name, isWin }) => (
+            <img key={id} className={classNames(styles.slot, isWin && styles.win)} src={image} alt={`Slot-${name}`} />
           ))}
         </div>
       </div>
